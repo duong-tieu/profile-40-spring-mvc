@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="/layout :: head">
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <script rel="stylesheet" href="*/style.css"></script>
+</head>
+<body>
+  <h1>Product list</h1>
+
+  <form th:action="@{/search}" th:method="get">
+      <input type="text" name="query" />
+      <button type="submit">Search</button>
+  </form>
+
+  <diV align="center">
+    <div>
+      <p>
+        <a th:href="@{/product/create}"> create new product</a>
+      </p>
+    </div>
+    <div>
+      <table id="products" border="2">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+           <tbody>
+           <tr th:each="product : ${products}">
+               <td th:text="${product.id}"></td>
+               <td th:text="${product.name}"></td>
+               <td th:text="${product.price}"></td>
+               <td><a th:href="@{/product/edit/{id}(id=${product.getId()})}">edit</a></td>
+               <td><a th:href="@{/product/delete/{id}(id=${product.getId()})}">delete</a></td>
+               <td><a th:href="@{/product/find/{id}(id=${product.getId()})}">view</a></td>
+           </tr>
+           </tbody>
+      </table>
+    </div>
+      <footer th:replace="/layout :: footer"></footer>
+  </diV>
+
+</body>
+</html>

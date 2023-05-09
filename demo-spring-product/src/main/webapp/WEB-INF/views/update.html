@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head th:replace="/layout :: head">
+  <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Update product</h3>
+<form action="#" th:action="@{/product/update}" th:object="${product}" method="post"
+      novalidate="novalidate">
+ <input type="hidden" th:field="*{id}">
+  <div>
+    <label>Name:</label>
+    <input type="text" th:field="*{name}">
+  </div>
+  <div>
+    <label>price:</label>
+    <input type="text" th:field="*{price}">
+  </div>
+  <button type="submit" value="update" > update </button>
+</form>
+<div>
+  <p>
+    <a th:href="@{/product}"> back to home</a>
+  </p>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
